@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:include filename="common_properties.xacro"/>
+    <xacro:include filename="inertia_properties.xacro"/>
 
     <!-- BASE LINK -->
     <link name="base_link"></link>
@@ -21,7 +22,6 @@
         <child link="chassis"/>
         <origin xyz="0 0 ${chassis_body_height/2}"/>
     </joint>
-
     <link name="chassis">
         <visual>
             <origin xyz="0 0 ${chassis_body_height/2}"/>
@@ -30,6 +30,15 @@
             </geometry>
             <material name="white"/>
         </visual>
+        <collision>
+            <origin xyz="0 0 ${chassis_body_height/2}"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_body_height}"/>
+            </geometry>
+        </collision>
+        <xacro:cuboid_inertia mass="0.6" width="${chassis_width}" height="${chassis_body_height}" depth="${chassis_length}">
+            <origin xyz="0 0 ${chassis_body_height/2}"/>
+        </xacro:cuboid_inertia>
     </link>
 
     <!-- FRONT LEFT WHEEL -->
@@ -46,6 +55,14 @@
             </geometry>
             <material name="black"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia mass="0.1" radius="${wheel_radius}" height="${wheel_thickness}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:cylinder_inertia>
     </link>
 
     <!-- FRONT RIGHT WHEEL -->
@@ -62,6 +79,14 @@
             </geometry>
             <material name="black"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia mass="0.1" radius="${wheel_radius}" height="${wheel_thickness}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:cylinder_inertia>
     </link>
 
     <!-- BACK LEFT WHEEL -->
@@ -78,6 +103,14 @@
             </geometry>
             <material name="black"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia mass="0.1" radius="${wheel_radius}" height="${wheel_thickness}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:cylinder_inertia>
     </link>
 
     <!-- BACK RIGHT WHEEL -->
@@ -94,6 +127,14 @@
             </geometry>
             <material name="black"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia mass="0.1" radius="${wheel_radius}" height="${wheel_thickness}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:cylinder_inertia>
     </link>
 
 </robot>
