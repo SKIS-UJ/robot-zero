@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- Geometric properties -->
+    <!-- Geometrics -->
     <xacro:property name="chassis_length" value="0.194"/>
     <xacro:property name="chassis_width"  value="0.168"/>
     <xacro:property name="chassis_height" value="0.100"/>
@@ -11,14 +11,19 @@
     <xacro:property name="wheel_thickness" value="0.0425"/>
 
     <!-- Offsets -->
-    <xacro:property name="wheel_front_x" value="0.088"/>
-    <xacro:property name="wheel_back_x" value="-0.088"/>
-    <xacro:property name="wheel_y" value="0.105"/>
-    <xacro:property name="wheel_z" value="0.040"/>
+    <xacro:property name="wheel_offset_x" value="0.088"/>
+    <xacro:property name="wheel_offset_y" value="0.105"/>
+    <xacro:property name="wheel_offset_z" value="0.040"/>
+
+    <!-- Controls -->
+    <xacro:property name="wheel_joint_damping" value="0.1"/> 
+    <xacro:property name="wheel_joint_friction" value="0.05"/>
+    <xacro:property name="max_wheel_velocity" value="1.0"/>
+    <xacro:property name="max_wheel_acceleration" value="1.0"/>
 
     <!-- Materials -->
     <material name="white"> <color rgba="1 1 1 1"/> </material>
     <material name="black"> <color rgba="0 0 0 1"/> </material>
-    <material name="red"> <color rgba="1 0 0 1"/> </material>
+    <material name="red">   <color rgba="1 0 0 1"/> </material>
 
 </robot>
